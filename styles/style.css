@@ -1,0 +1,71 @@
+.text {
+    text-align: center;
+    
+}
+
+header {
+    display: block;
+    margin: auto;
+    width: 40%;
+}
+
+#title {
+
+}
+
+#author-tag {
+    margin: 0 0 50px 0;
+}
+
+main {
+    background-color: lightblue;
+    display: block;
+    margin: auto;
+    top: 200px;
+    border: solid black;
+
+    width: 350px;
+    height: 550px;
+}
+
+#output {
+    margin: 15px;
+    padding: 15px;
+    font-size: 40px;
+    height: 45px;
+    border: solid gray 3px;
+    background-color: white;
+}
+
+#button-grid {
+    display: grid;
+    grid-template: repeat(4, 90px) / repeat(4, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    padding: 15px;
+}
+
+.key {
+    background-color: #00FFAF;
+    border: solid #00EFAF 4px;
+    transition: background-color .5s;
+    transition: border .5s;
+    font-size: 30px
+}
+
+.key:hover {
+    background-color: #00EFAF;
+}
+
+.key:focus {
+    background-color: #00EFFF;
+    border: solid #00EFFF;
+}
+
+#subtract {
+    font-size: 40px;
+}
+
+#enter {
+    grid-column: 2 / 4;
+}
