@@ -17,23 +17,34 @@
         </header>
 
         <main>
-            <div id="output"></div>
+            <div id="display-screen">
+                <div id="input-screen"></div>
+                <div id="output-screen"></div>
+            </div>
             <div id="button-grid">
-                <button id="1" class="key">1</button>
-                <button id="2" class="key">2</button>
-                <button id="3" class="key">3</button>
-                <button id="add" class="key">+</button>
-                <button id="4" class="key">4</button>
-                <button id="5" class="key">5</button>
-                <button id="6" class="key">6</button>
-                <button id="subtract" class="key">-</button>
-                <button id="7" class="key">7</button>
-                <button id="8" class="key">8</button>
-                <button id="9" class="key">9</button>
-                <button id="multiply" class="key">*</button>
-                <button id="0" class="key">0</button>
-                <button id="enter" class="key">Enter</button>
-                <button id="divide" class="key">/</button>
+                <button onclick='display("#input-screen", "", true)' id="clear" class="key">C</button>
+                <button onclick='addValue("Ans")' id="ans" class="key">Ans</button>
+                <button onclick='addValue(".")' id="decimal" class="key">.</button> <!--Make sure only works once-->
+                <button onclick='backspace()' id="back" class="key">←</button> <!--Does not currently work-->
+                <button onclick='addValue("(")' id="(" class="key">(</button>  <!--Don't use-->
+                <button onclick='addValue(")")' id=")" class="key">)</button>  <!--Don't use-->
+                <button onclick='addValue("^")' id="exp" class="key">^</button> <!--Don't use-->
+                <button onclick='addValue("+")' id="add" class="key">+</button>
+                <button onclick='addValue("1")' id="1" class="key">1</button>
+                <button onclick='addValue("2")' id="2" class="key">2</button>
+                <button onclick='addValue("3")' id="3" class="key">3</button>
+                <button onclick='addValue("−")' id="subtract" class="key">−</button>
+                <button onclick='addValue("4")' id="4" class="key">4</button>
+                <button onclick='addValue("5")' id="5" class="key">5</button>
+                <button onclick='addValue("6")' id="6" class="key">6</button>
+                <button onclick='addValue("*")' id="multiply" class="key">*</button>
+                <button onclick='addValue("7")' id="7" class="key">7</button>
+                <button onclick='addValue("8")' id="8" class="key">8</button>
+                <button onclick='addValue("9")' id="9" class="key">9</button>
+                <button onclick='addValue("/")' id="divide" class="key">/</button>
+                <button onclick='calculate()' id="enter" class="key">Enter</button>
+                <button onclick='addValue("0")' id="0" class="key">0</button>
+                <button onclick='addValue("%")' id="mod" class="key">%</button> <!--Don't use-->
             </form>
         </main>
         <script src="scripts/main.js"></script>
