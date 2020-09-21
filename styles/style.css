@@ -1,3 +1,7 @@
+html {
+  background-color: #add8e6;
+}
+
 .text {
   text-align: center;
 }
@@ -19,21 +23,21 @@ header {
 }
 
 main {
-  background-color: #add8e6;
+  background-color: #d3d3d3;
   display: block;
   margin: auto;
   border: solid black;
 
-  width: 350px;
-  height: 560px;
+  width: 500px;
+  height: 600px;
 }
 
 #display-screen {
   margin: 15px 15px 10px;
   padding: 15px;
-  font-size: 20px;
+  font-size: 30px;
   height: 60px;
-  width: 285px;
+  width: 436px;
   border: solid gray 2px;
   background-color: white;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -41,19 +45,18 @@ main {
 }
 
 #input-screen {
-  height: 40px;
+  height: 30px;
   width: 285px;
-  overflow-wrap: break-word;
 }
 
 #output-screen {
-  height: 20px;
+  height: 30px;
   text-align: right;
 }
 
 #button-grid {
   display: grid;
-  grid-template: repeat(4, 90px) / repeat(4, 1fr);
+  grid-template: repeat(5, 77.5px) / repeat(5, 82px);
   grid-column-gap: 15px;
   grid-row-gap: 15px;
   padding: 15px;
@@ -61,23 +64,21 @@ main {
 
 .key {
     cursor: pointer;
-    border: 1px solid #bbb;
+    border: 1px solid #c2c17c;
     overflow: visible;
     font: bold 30px helvetica;
     text-decoration: none;
     white-space: nowrap;
     color: rgb(30, 30, 30);
-    background-color: #ddd;
+    background-color: #e5e493;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
-
 .key:hover {
-  background-color: #eee;
+  background-color: #fffda0;
   color: rgb(80, 80, 80);
 }
-
 .key:active {
-  background: #e9e9e9;
+  background: #d4d388;
   position: relative;
   top: 1px;
   text-shadow: none;
@@ -86,4 +87,34 @@ main {
 
 #enter {
   grid-column: 1 / 3;
+  background-color: #ecc08e;
+  border: 1px solid #ddb17f;
+}
+#enter:hover {
+  background-color: #fdcc93;
+}
+#enter:active {
+  background-color: #e0b788;
+}
+
+.top {
+  background-color: #e9bed2;
+  border: 1px solid #cca6b8;
+}
+.top:hover {
+  background-color: #f7c7dd;
+}
+.top:active {
+  background-color: #d4a9bd;
+}
+
+.operator {
+  background-color: #bbb2e7;
+  border: 1px solid #b7aee7;
+}
+.operator:hover {
+  background-color: #d5cff0;
+}
+.operator:active {
+  background-color: #c4bee9;
 }
