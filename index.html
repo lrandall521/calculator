@@ -12,7 +12,7 @@
                 Four Function Calculator
             </h1>
             <p id="author-tag" class="text">
-                by Luke Randall
+                by Luke Randall, works with Order of Operations!
             </p>
         </header>
 
@@ -22,11 +22,9 @@
                 <div id="output-screen"></div>
             </div>
             <div id="button-grid">
-                <button onclick='addValue("Ans")' id="ans" class="key top">Ans</button>
-                <button onclick='addValue("(")' id="(" class="key top">(</button>  <!--Don't use-->
-                <button onclick='addValue(")")' id=")" class="key top">)</button>  <!--Don't use-->
-                <button onclick='display("#input-screen", "", true)' id="clear" class="key top">C</button>
-                <button onclick='backspace()' id="back" class="key top">←</button> <!--Does not currently work-->
+                <button onclick='addValue("Ans")' id="ans" class="key top">Answer</button>
+                <button onclick='display("#input-screen", "", true)' id="clear" class="key top">Clear</button>
+                <button onclick='backspace()' id="back" class="key top">←</button>
                 
                 <button onclick='addValue("1")' id="1" class="key">1</button>
                 <button onclick='addValue("2")' id="2" class="key">2</button>
@@ -46,7 +44,7 @@
                 <button onclick='addValue("*")' id="multiply" class="key operator">*</button>
                 <button onclick='addValue("%")' id="mod" class="key operator">%</button>
 
-                <button onclick='sendToCalculate()' id="enter" class="key">=</button>
+                <button onclick='sendToCalculate(oString)' id="enter" class="key">=</button>
                 <button onclick='addValue("0")' id="0" class="key">0</button>
                 <button onclick='addValue("/")' id="divide" class="key operator">/</button>
                 <button onclick='addValue(".")' id="decimal" class="key operator">.</button> <!--Make sure only works once-->
