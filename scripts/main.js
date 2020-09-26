@@ -184,7 +184,6 @@ function backspace() {
 }
 
 document.addEventListener("keypress", e => { //keyboard support
-    console.log(e.key);
     ["+", "*", "/", "%", "^", "1", "2", "3",
     "4", "5", "6", "7", "8", "9", "0", "(",")"].forEach(op => {
         if (e.key == op) addValue(op);
@@ -192,6 +191,6 @@ document.addEventListener("keypress", e => { //keyboard support
     if (e.key == "c") display("#input-screen", "", true);
     if (e.key == "a") addValue("Ans");
     if (e.key == "Enter") sendToCalculate(oString);
-    if (e.code == 8) backspace();
+    if (e.key == "b") backspace();
     if (e.key == "-") addValue("−");
 });
