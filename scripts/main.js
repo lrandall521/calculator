@@ -33,8 +33,7 @@ function addValue(operand) {
         if(oString.length === 0) oString += "Ans";
         oString += ` ${operand} `;}
     else if (numbers.includes(operand)) {
-        if (oString.substr(oString.length - 3, 3) === "Ans" ||
-           isNumber(oString.substr(oString.length - 1, 1))
+        if (oString.substr(oString.length - 3, 3) === "Ans" || isNumber(oString.substr(oString.length - 1, 1)))
             oString += " * Ans";
         else oString += operand;
     }
