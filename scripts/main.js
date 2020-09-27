@@ -55,9 +55,15 @@ function sendToCalculate(numberString) {
     answer = calculate(PEMDASify(PEMDASify(calc, "^", "√"),"*","/","%"));
     prevAnswer = true;
 
-    if(isNaN(answer) || !isFinite(answer)) answer = "Undefined";
+    if(isNaN(answer) || !isFinite(answer)) {
+        display("#output-screen", "Undefined", true);
+        answer = 0;
+        return;
+    }
+
     else if(answer > 9999999) {
         display("#output-screen", "Overflow error", true);
+        answer = 0;
         return;
     }
 
