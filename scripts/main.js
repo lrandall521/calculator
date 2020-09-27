@@ -33,7 +33,8 @@ function addValue(operand) {
         if(oString.length === 0) oString += "Ans";
         oString += ` ${operand} `;}
     else if (numbers.includes(operand)) {
-        if (oString.substr(oString.length - 3, 3) === "Ans")
+        if (oString.substr(oString.length - 3, 3) === "Ans" ||
+           isNumber(oString.substr(oString.length - 1, 1))
             oString += " * Ans";
         else oString += operand;
     }
@@ -55,7 +56,7 @@ function sendToCalculate(numberString) {
     answer = calculate(PEMDASify(PEMDASify(calc, "^", "√"),"*","/","%"));
     prevAnswer = true;
 
-    if (answer > 9999999) {
+    if (answer > 99999999) {
         display("#output-screen", "Overflow error", true);
         return;
     }
