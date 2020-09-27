@@ -55,13 +55,14 @@ function sendToCalculate(numberString) {
     answer = calculate(PEMDASify(PEMDASify(calc, "^", "√"),"*","/","%"));
     prevAnswer = true;
 
-    if (answer > 99999999) {
+    if(isNaN(answer) || !isFinite(answer)) answer = "Undefined";
+    else if(answer > 9999999) {
         display("#output-screen", "Overflow error", true);
         return;
     }
 
-    if (`${answer}`.length > 7) answer = Math.round(answer * Math.pow(10, 7)) / Math.pow(10, 7);
-    
+    else if(`${answer}`.length > 7) answer = Math.round(answer * Math.pow(10, 7)) / Math.pow(10, 7);
+
     if(correct) {
         if (answer != "") display("#output-screen", `= ${answer}`, false);
         else display("#output-screen", `= 0`, false);
