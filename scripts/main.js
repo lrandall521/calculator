@@ -11,10 +11,10 @@ const totalOperations = {
 const operations = ["+", "−", "*", "/", "%", "^", "√"];
 const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "Ans","."];
 
-let oString = "";
+let oString = ""; //"operator string" 
 let answer = 0;
-let prevAnswer = false; //clears previous answer
-let correct = true; //checks for correct decimals
+let prevAnswer = false; //used later to clear previous answer
+let correctDecimals = true; //used later to correct decimals
 
 function addValue(operand) {
     if(prevAnswer) {
@@ -23,24 +23,28 @@ function addValue(operand) {
     }
 
     operations.forEach((e) => {
-       if (oString.charAt(oString.length - 2) === e && operations.includes(operand)) 
+        if (oString.charAt(oString.length - 2) === e && operations.includes(operand)) 
             oString = oString.substring(0, oString.indexOf(e));
     }); //only allows one operator at a time
 
-    if (oString.length > 18)
-        alert("Too many numbers! Please hit Enter or Backspace.");
+    if (oString.length > 20)
+        alert("Too many numbers! Please hit Enter, Clear, or Backspace.");
     else if (operations.includes(operand)) {
         if(oString.length === 0) oString += "Ans";
-        oString += ` ${operand} `;}
-    else if (numbers.includes(operand)) {
+        oString += ` ${operand} `; }
+    else if (oString === "") oString += operand;
+    else if (operand === "Ans") {
+        if (oString.substr(oString.length - 1, 1) === " ")
+            oString += operand;
+        else oString += " * Ans"; }
+    else if(numbers.includes(operand))
         if (oString.substr(oString.length - 3, 3) === "Ans")
-            oString += " * Ans";
+            oString += ` * ${operand}`;
         else oString += operand;
-    }
     else console.log("Error: non number or operation inputed")
 
     display("#input-screen", oString, false);
-}   
+}
 
 function sendToCalculate(numberString) {
     let calc = numberString.split("");
@@ -61,16 +65,15 @@ function sendToCalculate(numberString) {
         return;
     }
 
-    else if(answer > 9999999) {
-        display("#output-screen", "Overflow error", true);
-        answer = 0;
+    if(String(answer).length > 6) { //scientific notation
+        let eResult = String(answer / Math.pow(10, `${answer}`.length - 1)).substr(0,7) + 
+            Number(answer).toExponential().substring(Number(answer).toExponential().indexOf('e'));
+        display("#output-screen", `= ${eResult}`, false);
         return;
     }
 
-    else if(`${answer}`.length > 7) answer = Math.round(answer * Math.pow(10, 7)) / Math.pow(10, 7);
-
-    if(correct) {
-        if (answer != "") display("#output-screen", `= ${answer}`, false);
+    if(correctDecimals) {
+        if (`${answer}` !== "") display("#output-screen", `= ${answer}`, false);
         else display("#output-screen", `= 0`, false);
     }
 }
@@ -112,16 +115,18 @@ function PEMDASify(calc, o1, o2, o3 = null){
     let cLength = calc.length;
     let PEMDASarray = [];
     for(let i = 0; i < cLength; i++) {
-        if ([o1, o2, o3].includes(calc[i])) {
+        if ([o1, o2, o3].includes(calc[i])) { //finds operand
             let j = i - 1;
-            while(isNumber(calc[j]))
+            while(isNumber(calc[j])) //finds first number
                 j--;
             let k = ++j;
-            while(isNumber(calc[j]) || calc[j] === calc[i]) {
+            while(isNumber(calc[j]) || calc[j] === calc[i]) { //finds second number
                 PEMDASarray.push(calc[j]);
                 j++;
             }
             calc.splice(k, PEMDASarray.length, calculate(PEMDASarray));
+            i = calc.indexOf(PEMDASarray[0]);
+            PEMDASarray = [];
         }
     }
     return calc;
@@ -132,11 +137,11 @@ function checkDecimals() {
         lastNum.value.split(".").length - 1 > 1 ||
         isNaN(firstNum.value) || isNaN(lastNum.value)) {
         alert("Incorrect decimals! Please backspace or click clear.");
-        correct = false;
+        correctDecimals = false;
         return false;
     }
     else {
-        correct = true;
+        correctDecimals = true;
         return true;
     }
 }
@@ -200,4 +205,6 @@ document.addEventListener("keypress", e => { //keyboard support
     if (e.key == "Enter") sendToCalculate(oString);
     if (e.key == "b") backspace();
     if (e.key == "-") addValue("−");
+    if (e.key == ".") addValue(".");
+    if (e.key == "r") addValue("√");
 });
