@@ -1,4 +1,4 @@
-/* Could not get parenthesis to work
+/* Prototype paranthesis file
 
 calc = checkForParentheses(calc);
 
